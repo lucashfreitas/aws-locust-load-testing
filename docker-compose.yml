@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  master:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    ports:
+      - "8089:8089"
+    command: -f /mnt/locust/locustfile.py --master -H http://master:8089
+  worker:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+  worker1:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+  worker2:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+  worker3:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+  worker4:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
+  worker5:
+    image: ECR_IMAGE_URI/locust-repository:IMAGE_TAG
+    command: -f /mnt/locust/locustfile.py --worker --master-host master

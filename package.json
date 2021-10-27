@@ -1,0 +1,30 @@
+{
+  "name": "aws-locust",
+  "version": "1.0.0",
+  "description": "Leverage load testing on your own AWS Cloud Infrastructure using Locust",
+  "main": "index.js",
+  "author": "Lucas Santos ",
+  "license": "MIT",
+  "keywords": [
+    "locust",
+    "load-testing",
+    "aws"
+  ],
+  "scripts": {
+    "convert": "yarn set-ecs-context && docker compose convert",
+    "up": "yarn set-ecs-context && docker compose up &&  docker context use default ",
+    "setup:aws": "npx zx scripts/setup-aws-profile.mjs",
+    "create-ecs-context": "npx zx scripts/create-ecs-context.mjs",
+    "reset-docker-context": "docker context use default",
+    "ecr-push-image": "yarn reset-docker-context && npx zx scripts/ecr-push-image.mjs",
+    "set-ecs-context": "docker context use locust"
+  },
+  "type": "module",
+  "devDependencies": {
+    "aws-cdk": "^1.129.0",
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "typescript": "^4.4.4",
+    "zx": "^4.2.0"
+  }
+}
